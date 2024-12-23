@@ -23,8 +23,8 @@ export class BatteryAction extends SingletonAction {
     // Initial battery status update
     await this.updateBattery(ev);
 
-    // Set up polling to fetch battery status every 5 seconds
-    const pollSeconds = 5;
+    // Set up polling to fetch battery
+    const pollSeconds = 60*5;
     streamDeck.logger.info(`Setting polling interval to ${pollSeconds} seconds`);
     this.intervalId = setInterval(() => {
       streamDeck.logger.info("Polling battery status");
@@ -80,9 +80,9 @@ export class BatteryAction extends SingletonAction {
     // Update the title based on battery state
     let titleText = `${battery}%`;
     if (charging) {
-      titleText = "Charging...";
+      titleText = "CHRG";
     } else if (fullCharge) {
-      titleText = "100% (Full)";
+      titleText = "100%";
     } else if (!online) {
       titleText = "Zzz";
     }
