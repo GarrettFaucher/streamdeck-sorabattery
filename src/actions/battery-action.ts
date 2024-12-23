@@ -13,6 +13,7 @@ streamDeck.logger.info("Imported required modules and dependencies");
 @action({ UUID: "com.garrett-faucher.sora-battery.monitor" })
 export class BatteryAction extends SingletonAction {
   private intervalId?: ReturnType<typeof setInterval>;
+  private pollingInterval: number = 60; // Default polling interval (in seconds)
 
   /**
    * Called when the action first appears. Sets up periodic polling.
@@ -23,13 +24,8 @@ export class BatteryAction extends SingletonAction {
     // Initial battery status update
     await this.updateBattery(ev);
 
-    // Set up polling to fetch battery
-    const pollSeconds = 60*5;
-    streamDeck.logger.info(`Setting polling interval to ${pollSeconds} seconds`);
-    this.intervalId = setInterval(() => {
-      streamDeck.logger.info("Polling battery status");
-      void this.updateBattery(ev);
-    }, pollSeconds * 1000);
+    // Start polling with the default interval
+    this.setupPolling(ev);
   }
 
   /**
@@ -55,6 +51,7 @@ export class BatteryAction extends SingletonAction {
 
   /**
    * Fetch the battery status and update the button title.
+   * Also adjust polling interval based on battery state.
    * @param ev The event object
    * @param force Optional flag to skip rate-limiting checks
    */
@@ -89,5 +86,28 @@ export class BatteryAction extends SingletonAction {
 
     streamDeck.logger.info(`Setting button title to: ${titleText}`);
     await ev.action.setTitle(titleText);
+
+    // Adjust polling interval based on charging state
+    const newInterval = charging || !online ? 5 : 300; // 1 minute if charging, 5 minutes if on battery
+    if (newInterval !== this.pollingInterval) {
+      this.pollingInterval = newInterval;
+      this.setupPolling(ev);
+    }
+  }
+
+  /**
+   * Set up polling with the current polling interval.
+   * @param ev The event object to pass to the polling function.
+   */
+  private setupPolling(ev: WillAppearEvent): void {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+    }
+
+    streamDeck.logger.info(`Setting polling interval to ${this.pollingInterval} seconds`);
+    this.intervalId = setInterval(() => {
+      streamDeck.logger.info("Polling battery status");
+      void this.updateBattery(ev);
+    }, this.pollingInterval * 1000);
   }
 }
