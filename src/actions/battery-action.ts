@@ -99,7 +99,7 @@ export class BatteryAction extends SingletonAction {
    * Set up polling with the current polling interval.
    * @param ev The event object to pass to the polling function.
    */
-  private setupPolling(ev: WillAppearEvent): void {
+  private setupPolling(ev: KeyDownEvent | WillAppearEvent): void {
     if (this.intervalId) {
       clearInterval(this.intervalId);
     }
