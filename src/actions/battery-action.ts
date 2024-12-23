@@ -50,7 +50,7 @@ export class BatteryAction extends SingletonAction {
   }
 
   /**
-   * Fetch the battery status and update the button title.
+   * Fetch the battery status and update the button title and color.
    * Also adjust polling interval based on battery state.
    * @param ev The event object
    * @param force Optional flag to skip rate-limiting checks
@@ -84,9 +84,18 @@ export class BatteryAction extends SingletonAction {
       titleText = "Zzz";
     }
 
-    streamDeck.logger.info(`Setting button title to: ${titleText}`);
-    await ev.action.setTitle(titleText);
+    // Set the title color based on battery level
+    let titleColor = "#00FF00"; // Green
+    if (battery < 30) {
+      titleColor = "#FF0000"; // Red
+    } else if (battery < 60) {
+      titleColor = "#FFFF00"; // Yellow
+    }
 
+    streamDeck.logger.info(`Setting button title to: ${titleText}`);
+    streamDeck.logger.info(`Setting button title color to: ${titleColor}`);
+    await ev.action.setTitle(titleText);
+    
     // Adjust polling interval based on charging state
     const newInterval = charging || !online ? 5 : 300; // 1 minute if charging, 5 minutes if on battery
     if (newInterval !== this.pollingInterval) {
