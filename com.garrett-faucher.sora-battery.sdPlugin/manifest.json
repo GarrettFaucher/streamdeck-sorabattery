@@ -13,7 +13,7 @@
 			],
 			"States": [
 				{
-					"Image": "imgs/actions/battery/battery",
+					"Image": "imgs/actions/battery/batt",
 					"TitleAlignment": "middle",
 					"FontSize": 14,
 					"TitleColor": "#ffffff"

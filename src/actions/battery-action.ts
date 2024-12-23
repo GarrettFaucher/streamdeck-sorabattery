@@ -75,13 +75,13 @@ export class BatteryAction extends SingletonAction {
     );
 
     // Update the title based on battery state
-    let titleText = `${battery}%`;
+    let titleText = `${battery} `;
     if (charging) {
-      titleText = "CHRG";
+      titleText = "CHRG ";
     } else if (fullCharge) {
-      titleText = "100%";
+      titleText = "100 ";
     } else if (!online) {
-      titleText = "Zzz";
+      titleText = "Zzz ";
     }
 
     // Set the title color based on battery level
@@ -95,7 +95,7 @@ export class BatteryAction extends SingletonAction {
     streamDeck.logger.info(`Setting button title to: ${titleText}`);
     streamDeck.logger.info(`Setting button title color to: ${titleColor}`);
     await ev.action.setTitle(titleText);
-    
+
     // Adjust polling interval based on charging state
     const newInterval = charging || !online ? 5 : 300; // 1 minute if charging, 5 minutes if on battery
     if (newInterval !== this.pollingInterval) {
