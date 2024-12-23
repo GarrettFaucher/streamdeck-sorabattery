@@ -1,0 +1,47 @@
+{
+	"Name": "Sora Battery",
+	"Version": "0.1.0.0",
+	"Author": "Garrett Faucher",
+	"Actions": [
+		{
+			"Name": "Battery Monitor",
+			"UUID": "com.garrett-faucher.sora-battery.monitor",
+			"Icon": "imgs/actions/battery/icon",
+			"Tooltip": "Displays the battery percentage of your Sora V2 mouse.",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/battery/key",
+					"TitleAlignment": "middle",
+					"FontSize": "14"
+				}
+			]
+		}
+	],
+	"Category": "Sora Battery",
+	"CategoryIcon": "imgs/plugin/category-icon",
+	"CodePath": "bin/plugin.js",
+	"Description": "Display Sora V2 battery as a percentage",
+	"Icon": "imgs/plugin/marketplace",
+	"SDKVersion": 2,
+	"Software": {
+		"MinimumVersion": "6.4"
+	},
+	"OS": [
+		{
+			"Platform": "mac",
+			"MinimumVersion": "10.15"
+		},
+		{
+			"Platform": "windows",
+			"MinimumVersion": "10"
+		}
+	],
+	"Nodejs": {
+		"Version": "20",
+		"Debug": "enabled"
+	},
+	"UUID": "com.garrett-faucher.sora-battery"
+}
