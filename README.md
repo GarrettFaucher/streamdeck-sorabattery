@@ -3,6 +3,10 @@
 https://docs.elgato.com/streamdeck/sdk/introduction/getting-started
 
 
-# Installing
+npm install
+npm run watch
 
-There isn't a 
+Once done making changes
+
+streamdeck validate com.garrett-faucher.sora-battery.sdPlugin
+streamdeck pack com.garrett-faucher.sora-battery.sdPlugin -f
