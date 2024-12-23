@@ -15,7 +15,7 @@
 				{
 					"Image": "imgs/actions/battery/key",
 					"TitleAlignment": "middle",
-					"FontSize": "14"
+					"FontSize": 14
 				}
 			]
 		}
