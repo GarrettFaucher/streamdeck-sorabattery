@@ -1,7 +1,8 @@
 {
     "scripts": {
         "build": "rollup -c",
-        "watch": "rollup -c -w --watch.onEnd=\"streamdeck restart com.garrett-faucher.sora-battery\""
+        "watch": "rollup -c -w --watch.onEnd=\"streamdeck restart com.garrett-faucher.sora-battery\"",
+        "deploy": "ln -sfn \"$PWD/com.garrett-faucher.sora-battery.sdPlugin\" \"$HOME/.config/opendeck/plugins/com.garrett-faucher.sora-battery.sdPlugin\""
     },
     "type": "module",
     "devDependencies": {
@@ -19,7 +20,6 @@
     },
     "dependencies": {
         "@elgato/streamdeck": "^1.0.0",
-        "hid": "^1.0.1",
         "node-hid": "^3.1.2"
     }
 }

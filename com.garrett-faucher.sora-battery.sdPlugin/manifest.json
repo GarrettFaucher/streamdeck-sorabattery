@@ -38,6 +38,9 @@
 		{
 			"Platform": "windows",
 			"MinimumVersion": "10"
+		},
+		{
+			"Platform": "linux"
 		}
 	],
 	"Nodejs": {
