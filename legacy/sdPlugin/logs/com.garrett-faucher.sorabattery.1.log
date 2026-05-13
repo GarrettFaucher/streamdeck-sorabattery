@@ -1,0 +1,26 @@
+2026-05-13T20:42:12.232Z INFO  Imported required modules and dependencies
+2026-05-13T20:42:12.232Z WARN  Log level cannot be set to TRACE whilst not in debug mode.
+2026-05-13T20:42:12.297Z INFO  Action appeared, setting up battery status update
+2026-05-13T20:42:12.297Z INFO  Fetching battery status
+2026-05-13T20:42:12.516Z INFO  Action appeared, setting up battery status update
+2026-05-13T20:42:12.516Z INFO  Fetching battery status
+2026-05-13T20:42:12.578Z INFO  Battery: 76%, charging=0, fullCharge=0, online=1
+2026-05-13T20:42:12.578Z INFO  Rendering key: "76%" #4ade80
+2026-05-13T20:42:12.578Z INFO  Polling interval: 300s
+2026-05-13T20:42:12.578Z INFO  Polling interval: 300s
+2026-05-13T20:42:12.796Z INFO  Battery: 76%, charging=0, fullCharge=0, online=1
+2026-05-13T20:42:12.796Z INFO  Rendering key: "76%" #4ade80
+2026-05-13T20:42:12.796Z INFO  Polling interval: 300s
+2026-05-13T20:42:38.759Z INFO  Fetching battery status
+2026-05-13T20:42:39.037Z INFO  Battery: 76%, charging=0, fullCharge=0, online=1
+2026-05-13T20:42:39.037Z INFO  Rendering key: "76%" #4ade80
+2026-05-13T20:45:45.483Z INFO  Key down event triggered, forcing battery update
+2026-05-13T20:45:45.483Z INFO  Fetching battery status
+2026-05-13T20:45:45.762Z INFO  Battery: 76%, charging=0, fullCharge=0, online=1
+2026-05-13T20:45:45.762Z INFO  Rendering key: "76%" #4ade80
+2026-05-13T20:47:12.798Z INFO  Fetching battery status
+2026-05-13T20:47:13.076Z INFO  Battery: 76%, charging=0, fullCharge=0, online=1
+2026-05-13T20:47:13.076Z INFO  Rendering key: "76%" #4ade80
+2026-05-13T20:47:38.762Z INFO  Fetching battery status
+2026-05-13T20:47:39.039Z INFO  Battery: 76%, charging=0, fullCharge=0, online=1
+2026-05-13T20:47:39.040Z INFO  Rendering key: "76%" #4ade80

@@ -1,0 +1,67 @@
+2026-05-13T20:48:04.204Z INFO  Imported required modules and dependencies
+2026-05-13T20:48:04.205Z WARN  Log level cannot be set to TRACE whilst not in debug mode.
+2026-05-13T20:48:04.259Z INFO  Action appeared, setting up battery status update
+2026-05-13T20:48:04.259Z INFO  Fetching battery status
+2026-05-13T20:48:04.488Z INFO  Action appeared, setting up battery status update
+2026-05-13T20:48:04.488Z INFO  Fetching battery status
+2026-05-13T20:48:04.537Z INFO  Battery: 76%, charging=0, fullCharge=0, online=1
+2026-05-13T20:48:04.537Z INFO  Rendering key: "76%" #4ade80
+2026-05-13T20:48:04.538Z INFO  Polling interval: 300s
+2026-05-13T20:48:04.538Z INFO  Polling interval: 300s
+2026-05-13T20:48:04.766Z INFO  Battery: 76%, charging=0, fullCharge=0, online=1
+2026-05-13T20:48:04.766Z INFO  Rendering key: "76%" #4ade80
+2026-05-13T20:48:04.766Z INFO  Polling interval: 300s
+2026-05-13T20:52:12.800Z INFO  Fetching battery status
+2026-05-13T20:52:13.080Z INFO  Battery: 76%, charging=0, fullCharge=0, online=1
+2026-05-13T20:52:13.080Z INFO  Rendering key: "76%" #4ade80
+2026-05-13T20:52:38.765Z INFO  Fetching battery status
+2026-05-13T20:52:39.042Z INFO  Battery: 75%, charging=0, fullCharge=0, online=1
+2026-05-13T20:52:39.042Z INFO  Rendering key: "75%" #4ade80
+2026-05-13T20:53:04.766Z INFO  Fetching battery status
+2026-05-13T20:53:05.044Z INFO  Battery: 75%, charging=0, fullCharge=0, online=1
+2026-05-13T20:53:05.044Z INFO  Rendering key: "75%" #4ade80
+2026-05-13T20:57:12.803Z INFO  Fetching battery status
+2026-05-13T20:57:13.081Z INFO  Battery: 75%, charging=0, fullCharge=0, online=1
+2026-05-13T20:57:13.081Z INFO  Rendering key: "75%" #4ade80
+2026-05-13T20:57:38.769Z INFO  Fetching battery status
+2026-05-13T20:57:39.046Z INFO  Battery: 75%, charging=0, fullCharge=0, online=1
+2026-05-13T20:57:39.046Z INFO  Rendering key: "75%" #4ade80
+2026-05-13T20:58:04.768Z INFO  Fetching battery status
+2026-05-13T20:58:05.047Z INFO  Battery: 75%, charging=0, fullCharge=0, online=1
+2026-05-13T20:58:05.047Z INFO  Rendering key: "75%" #4ade80
+2026-05-13T21:02:12.806Z INFO  Fetching battery status
+2026-05-13T21:02:13.085Z INFO  Battery: 75%, charging=0, fullCharge=0, online=1
+2026-05-13T21:02:13.085Z INFO  Rendering key: "75%" #4ade80
+2026-05-13T21:02:38.772Z INFO  Fetching battery status
+2026-05-13T21:02:39.048Z INFO  Battery: 74%, charging=0, fullCharge=0, online=1
+2026-05-13T21:02:39.049Z INFO  Rendering key: "74%" #4ade80
+2026-05-13T21:03:04.770Z INFO  Fetching battery status
+2026-05-13T21:03:05.047Z INFO  Battery: 74%, charging=0, fullCharge=0, online=1
+2026-05-13T21:03:05.047Z INFO  Rendering key: "74%" #4ade80
+2026-05-13T21:07:12.809Z INFO  Fetching battery status
+2026-05-13T21:07:13.086Z INFO  Battery: 74%, charging=0, fullCharge=0, online=1
+2026-05-13T21:07:13.086Z INFO  Rendering key: "74%" #4ade80
+2026-05-13T21:07:38.775Z INFO  Fetching battery status
+2026-05-13T21:07:39.052Z INFO  Battery: 74%, charging=0, fullCharge=0, online=1
+2026-05-13T21:07:39.052Z INFO  Rendering key: "74%" #4ade80
+2026-05-13T21:08:04.772Z INFO  Fetching battery status
+2026-05-13T21:08:05.050Z INFO  Battery: 74%, charging=0, fullCharge=0, online=1
+2026-05-13T21:08:05.050Z INFO  Rendering key: "74%" #4ade80
+2026-05-13T21:12:12.812Z INFO  Fetching battery status
+2026-05-13T21:12:13.088Z INFO  Battery: 74%, charging=0, fullCharge=0, online=1
+2026-05-13T21:12:13.088Z INFO  Rendering key: "74%" #4ade80
+2026-05-13T21:12:38.778Z INFO  Fetching battery status
+2026-05-13T21:12:39.055Z INFO  Battery: 74%, charging=0, fullCharge=0, online=1
+2026-05-13T21:12:39.055Z INFO  Rendering key: "74%" #4ade80
+2026-05-13T21:13:04.775Z INFO  Fetching battery status
+2026-05-13T21:13:05.053Z INFO  Battery: 74%, charging=0, fullCharge=0, online=1
+2026-05-13T21:13:05.053Z INFO  Rendering key: "74%" #4ade80
+2026-05-13T21:17:12.815Z INFO  Fetching battery status
+2026-05-13T21:17:13.093Z INFO  Battery: 74%, charging=0, fullCharge=0, online=1
+2026-05-13T21:17:13.093Z INFO  Rendering key: "74%" #4ade80
+2026-05-13T21:17:38.782Z INFO  Fetching battery status
+2026-05-13T21:17:39.059Z INFO  Battery: 74%, charging=0, fullCharge=0, online=1
+2026-05-13T21:17:39.059Z INFO  Rendering key: "74%" #4ade80
+2026-05-13T21:18:04.778Z INFO  Fetching battery status
+2026-05-13T21:18:05.056Z INFO  Battery: 74%, charging=0, fullCharge=0, online=1
+2026-05-13T21:18:05.056Z INFO  Rendering key: "74%" #4ade80

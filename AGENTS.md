@@ -1,55 +1,53 @@
 # Agent Guide
 
-## Project layout
+## What this repo is
 
-```
-src/
-  plugin.ts               entry point — registers BatteryAction, connects to OpenDeck/Stream Deck
-  actions/
-    battery-action.ts     SingletonAction — polling loop, title/colour updates, key-press handler
-    battery-hid.ts        all HID I/O — enumerate device, send feature report, parse battery data
-com.garrett-faucher.sorabattery.sdPlugin/
-  manifest.json           plugin metadata (UUID, actions, OS support including linux)
-  imgs/                   icons shipped with the plugin
-  bin/                    rollup output — generated, not committed (plugin.js + package.json)
-udev/
-  70-sora-v2.rules        udev rule granting hidraw access to the Sora V2 mouse
-```
+A Rust OpenAction plugin that reads the Ninjutso Sora V2 mouse battery via HID feature reports and renders a colored percentage label on a Stream Deck key.
+
+Uses the `openaction` crate (OpenAction protocol, compatible with both OpenDeck and Elgato Stream Deck software).
 
 ## Build
 
 ```sh
-npm install   # local only, no global packages
-npm run build # rollup → .sdPlugin/bin/plugin.js
+cargo build --release        # binary: target/release/oasorabattery
+cargo check                  # fast type-check without linking
 ```
 
-Rollup bundles `@elgato/streamdeck` and all pure-JS deps. `node-hid` is loaded at runtime via `createRequire(import.meta.url)` and must **not** be bundled — the native `.node` binding cannot be included in the rollup output. Node's module resolution walks up from `bin/plugin.js` to find `node_modules/node-hid/` in the repo root, which works because the plugin is deployed as a symlink (real path stays inside the project tree).
+Requires `libhidapi-dev` (Linux) or `hidapi` (macOS via Homebrew). Edition 2024 — requires Rust 1.85+.
 
-## Deploy
+## Project layout
 
-```sh
-npm run deploy  # symlinks .sdPlugin into ~/.config/opendeck/plugins/
-```
+| File | Purpose |
+|------|---------|
+| `src/main.rs` | Entry point — registers the action and calls `run()` |
+| `src/battery.rs` | `BatteryAction` — `will_appear` spawns the poll loop; `key_down` fires an immediate refresh |
+| `src/sora_hid.rs` | `read_battery()` — sync HID I/O run via `spawn_blocking` |
+| `src/render.rs` | `Renderer` — renders a text label onto a 144×144 PNG via imageproc/ab_glyph |
+| `assets/manifest.json` | Plugin metadata (UUID, action, CodePaths for 5 targets) |
+| `assets/fonts/LiberationSans-Bold.ttf` | Bundled font — do not move without updating `include_bytes!` path |
+| `udev/70-sora-v2.rules` | udev rule granting hidraw access (Linux only) |
+| `legacy/` | Original TypeScript source — reference only, not built |
 
-Then restart OpenDeck. To remove: `rm ~/.config/opendeck/plugins/com.garrett-faucher.sorabattery.sdPlugin`.
+## HID protocol (mirrored from `legacy/src/actions/battery-hid.ts`)
 
-## Runtime constraints
-
-- **Node ≥ 20** required; OpenDeck uses the system `node` binary.
-- **udev rule** must be installed before the plugin can open the mouse (`1915:ae1c` wireless, `1915:ae11` wired). See `udev/70-sora-v2.rules` and the README install steps.
-- **Do not add runtime dependencies.** `node-hid` is the only non-bundleable dep; any new runtime library either needs to be bundleable (gets rolled into plugin.js by rollup) or becomes another native module that complicates deployment. Check with the owner before adding deps.
+- VID `0x1915`, PID `0xae1c` (wireless) / `0xae11` (wired), usage page `0xffa0`
+- Feature report: `[0]=5, [1]=21, [4]=1`, rest zeros; send then wait 250 ms; get feature report ID 5
+- Response bytes: `[9]=percent, [10]=charging, [11]=full_charge, [12]=online`
 
 ## Key behaviours
 
-- Polling is adaptive: 5 s while charging or sleeping, 5 min on battery.
-- `onKeyDown` forces an immediate refresh regardless of interval.
-- `getBatteryStatus()` returns `null` on any HID error; the action sets the title to `N/A` and continues.
-- Title colour thresholds: green ≥ 60 %, yellow 30–59 %, red < 30 %.
+- Poll cadence: 5 s while charging or offline, 300 s on battery.
+- `key_down` spawns a one-shot refresh task — does not wait for the main loop.
+- `read_battery()` opens and closes the device each call — no persistent handle (avoids conflicts with other software).
 
 ## Testing
 
-No automated test suite. To verify end-to-end:
+1. `lsusb | grep 1915` — confirms mouse is seen by USB.
+2. After installing, drag **Battery Monitor** onto a key in OpenDeck; confirm the percentage appears within ~1 s.
+3. Attach a debugger or check OpenDeck's plugin log for simplelog output.
 
-1. `node -e 'const r=require("node-hid"); console.log(r.devices().filter(d=>d.vendorId===0x1915))'` — confirms hidraw access.
-2. Drag the action onto a key in OpenDeck; confirm the percentage appears within ~1 s.
-3. Check `~/.config/opendeck/plugins/com.garrett-faucher.sorabattery.sdPlugin/logs/` for TRACE-level output.
+## Reference
+
+- openaction API: `~/.cargo/registry/src/**/openaction-2.6.*/`
+- OpenAction docs: https://github.com/OpenActionAPI/docs
+- hidapi crate: https://docs.rs/hidapi
