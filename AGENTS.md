@@ -8,7 +8,7 @@ src/
   actions/
     battery-action.ts     SingletonAction — polling loop, title/colour updates, key-press handler
     battery-hid.ts        all HID I/O — enumerate device, send feature report, parse battery data
-com.garrett-faucher.sora-battery.sdPlugin/
+com.garrett-faucher.sorabattery.sdPlugin/
   manifest.json           plugin metadata (UUID, actions, OS support including linux)
   imgs/                   icons shipped with the plugin
   bin/                    rollup output — generated, not committed (plugin.js + package.json)
@@ -31,7 +31,7 @@ Rollup bundles `@elgato/streamdeck` and all pure-JS deps. `node-hid` is loaded a
 npm run deploy  # symlinks .sdPlugin into ~/.config/opendeck/plugins/
 ```
 
-Then restart OpenDeck. To remove: `rm ~/.config/opendeck/plugins/com.garrett-faucher.sora-battery.sdPlugin`.
+Then restart OpenDeck. To remove: `rm ~/.config/opendeck/plugins/com.garrett-faucher.sorabattery.sdPlugin`.
 
 ## Runtime constraints
 
@@ -52,4 +52,4 @@ No automated test suite. To verify end-to-end:
 
 1. `node -e 'const r=require("node-hid"); console.log(r.devices().filter(d=>d.vendorId===0x1915))'` — confirms hidraw access.
 2. Drag the action onto a key in OpenDeck; confirm the percentage appears within ~1 s.
-3. Check `~/.config/opendeck/plugins/com.garrett-faucher.sora-battery.sdPlugin/logs/` for TRACE-level output.
+3. Check `~/.config/opendeck/plugins/com.garrett-faucher.sorabattery.sdPlugin/logs/` for TRACE-level output.

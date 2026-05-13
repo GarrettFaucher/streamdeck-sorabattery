@@ -1,8 +1,8 @@
 {
     "scripts": {
         "build": "rollup -c",
-        "watch": "rollup -c -w --watch.onEnd=\"streamdeck restart com.garrett-faucher.sora-battery\"",
-        "deploy": "ln -sfn \"$PWD/com.garrett-faucher.sora-battery.sdPlugin\" \"$HOME/.config/opendeck/plugins/com.garrett-faucher.sora-battery.sdPlugin\""
+        "watch": "rollup -c -w --watch.onEnd=\"streamdeck restart com.garrett-faucher.sorabattery\"",
+        "deploy": "ln -sfn \"$PWD/com.garrett-faucher.sorabattery.sdPlugin\" \"$HOME/.config/opendeck/plugins/com.garrett-faucher.sorabattery.sdPlugin\""
     },
     "type": "module",
     "devDependencies": {

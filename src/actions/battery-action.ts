@@ -10,7 +10,7 @@ import { getBatteryStatus } from "./battery-hid";
 
 streamDeck.logger.info("Imported required modules and dependencies");
 
-@action({ UUID: "com.garrett-faucher.sora-battery.monitor" })
+@action({ UUID: "com.garrett-faucher.sorabattery.monitor" })
 export class BatteryAction extends SingletonAction {
   private intervalId?: ReturnType<typeof setInterval>;
   private pollingInterval: number = 60;

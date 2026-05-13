@@ -5,7 +5,7 @@
 	"Actions": [
 		{
 			"Name": "Battery Monitor",
-			"UUID": "com.garrett-faucher.sora-battery.monitor",
+			"UUID": "com.garrett-faucher.sorabattery.monitor",
 			"Icon": "imgs/actions/battery/icon",
 			"Tooltip": "Displays the battery percentage of your Sora V2 mouse.",
 			"Controllers": [
@@ -47,5 +47,5 @@
 		"Version": "20",
 		"Debug": "enabled"
 	},
-	"UUID": "com.garrett-faucher.sora-battery"
+	"UUID": "com.garrett-faucher.sorabattery"
 }

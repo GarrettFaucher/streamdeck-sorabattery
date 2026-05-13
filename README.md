@@ -42,7 +42,7 @@ npm run build
 npm run deploy
 ```
 
-This symlinks `com.garrett-faucher.sora-battery.sdPlugin` into `~/.config/opendeck/plugins/`. No files are copied; reverting is `rm ~/.config/opendeck/plugins/com.garrett-faucher.sora-battery.sdPlugin`.
+This symlinks `com.garrett-faucher.sorabattery.sdPlugin` into `~/.config/opendeck/plugins/`. No files are copied; reverting is `rm ~/.config/opendeck/plugins/com.garrett-faucher.sorabattery.sdPlugin`.
 
 ### 4. Restart OpenDeck
 
@@ -63,7 +63,7 @@ Then drag **Battery Monitor** from the Sora Battery category onto a key.
 | Stale reading | Press the key to force a refresh |
 | Build errors | `rm -rf node_modules && npm install` |
 
-Logs are written to `~/.config/opendeck/plugins/com.garrett-faucher.sora-battery.sdPlugin/logs/` when the plugin is running.
+Logs are written to `~/.config/opendeck/plugins/com.garrett-faucher.sorabattery.sdPlugin/logs/` when the plugin is running.
 
 ## Development (Elgato Stream Deck app)
 
@@ -74,14 +74,14 @@ npm run watch   # rebuild on save + restart plugin
 To publish:
 
 ```sh
-npx streamdeck validate com.garrett-faucher.sora-battery.sdPlugin
-npx streamdeck pack com.garrett-faucher.sora-battery.sdPlugin -f
+npx streamdeck validate com.garrett-faucher.sorabattery.sdPlugin
+npx streamdeck pack com.garrett-faucher.sorabattery.sdPlugin -f
 ```
 
 ## Removing the plugin
 
 ```sh
-rm ~/.config/opendeck/plugins/com.garrett-faucher.sora-battery.sdPlugin
+rm ~/.config/opendeck/plugins/com.garrett-faucher.sorabattery.sdPlugin
 sudo rm /etc/udev/rules.d/70-sora-v2.rules
 sudo udevadm control --reload-rules && sudo udevadm trigger
 ```
