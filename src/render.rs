@@ -1,4 +1,4 @@
-use ab_glyph::{Font as _, FontRef, PxScale, ScaleFont as _};
+use ab_glyph::{Font as _, FontRef, PxScale, ScaleFont as _, point};
 use anyhow::Result;
 use base64::{Engine as _, engine::general_purpose};
 use image::{Rgba, RgbaImage};
@@ -36,15 +36,41 @@ impl Renderer {
 			y: scale_px,
 		};
 
-		// Centre the text horizontally; vertically place it at visual midpoint.
+		// Layout glyphs as draw_text_mut does, then union their px_bounds for
+		// the actual visible ink rectangle. h_advance includes side-bearings,
+		// which causes visual mis-centering (especially with '%').
 		let sf = font.as_scaled(scale);
-		let text_w: f32 = label.chars().map(|c| sf.h_advance(sf.glyph_id(c))).sum();
-		let ascent = sf.ascent();
-		let descent = sf.descent();
-		let text_h = ascent - descent;
-
-		let x = ((W as f32 - text_w) / 2.0).round() as i32;
-		let y = ((H as f32 - text_h) / 2.0 + descent.abs()).round() as i32;
+		let mut caret = 0.0_f32;
+		let mut prev_id = None;
+		let mut min_x = f32::INFINITY;
+		let mut max_x = f32::NEG_INFINITY;
+		let mut min_y = f32::INFINITY;
+		let mut max_y = f32::NEG_INFINITY;
+		for c in label.chars() {
+			let gid = sf.glyph_id(c);
+			if let Some(prev) = prev_id {
+				caret += sf.kern(prev, gid);
+			}
+			let glyph = gid.with_scale_and_position(scale, point(caret, sf.ascent()));
+			if let Some(outlined) = font.outline_glyph(glyph) {
+				let bb = outlined.px_bounds();
+				min_x = min_x.min(bb.min.x);
+				max_x = max_x.max(bb.max.x);
+				min_y = min_y.min(bb.min.y);
+				max_y = max_y.max(bb.max.y);
+			}
+			caret += sf.h_advance(gid);
+			prev_id = Some(gid);
+		}
+		let (x, y) = if min_x.is_finite() {
+			let vw = max_x - min_x;
+			let vh = max_y - min_y;
+			let x = ((W as f32 - vw) / 2.0 - min_x).round() as i32;
+			let y = ((H as f32 - vh) / 2.0 - min_y).round() as i32;
+			(x, y)
+		} else {
+			(0, 0)
+		};
 
 		draw_text_mut(&mut img, color, x, y, scale, &font, label);
 
