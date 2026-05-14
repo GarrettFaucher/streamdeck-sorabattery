@@ -1,0 +1,33 @@
+{
+	"Name": "Sora Battery",
+	"Author": "Garrett Faucher",
+	"Version": "0.1.0",
+	"Description": "Display the battery percentage of your Ninjutso Sora V2 mouse",
+	"Icon": "icon",
+	"Category": "Sora Battery",
+	"OS": [
+		{ "Platform": "linux" },
+		{ "Platform": "mac", "MinimumVersion": "10.15" },
+		{ "Platform": "windows", "MinimumVersion": "10" }
+	],
+	"CodePaths": {
+		"x86_64-pc-windows-msvc": "oasorabattery-x86_64-pc-windows-msvc.exe",
+		"x86_64-apple-darwin": "oasorabattery-x86_64-apple-darwin",
+		"aarch64-apple-darwin": "oasorabattery-aarch64-apple-darwin",
+		"x86_64-unknown-linux-gnu": "oasorabattery-x86_64-unknown-linux-gnu",
+		"aarch64-unknown-linux-gnu": "oasorabattery-aarch64-unknown-linux-gnu"
+	},
+	"CodePathWin": "oasorabattery-x86_64-pc-windows-msvc.exe",
+	"CodePathMac": "oasorabattery-x86_64-apple-darwin",
+	"CodePathLin": "oasorabattery-x86_64-unknown-linux-gnu",
+	"Actions": [
+		{
+			"UUID": "com.garrett-faucher.sorabattery.monitor",
+			"Name": "Battery Monitor",
+			"Icon": "imgs/battery",
+			"Tooltip": "Displays the battery percentage of your Sora V2 mouse",
+			"Controllers": ["Keypad"],
+			"States": [{ "Image": "actionDefaultImage" }]
+		}
+	]
+}
