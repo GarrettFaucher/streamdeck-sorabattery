@@ -2,7 +2,7 @@
 set -euo pipefail
 
 TARGET=x86_64-unknown-linux-gnu
-PLUGIN_DIR=~/.config/opendeck/plugins/com.garrett-faucher.sorabattery.sdPlugin
+PLUGIN_DIR=~/.config/opendeck/plugins/com.garrettfaucher.sorabattery.sdPlugin
 
 cargo build --release
 rm -rf "$PLUGIN_DIR"

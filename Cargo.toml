@@ -2,6 +2,14 @@
 name = "oasorabattery"
 version = "0.1.0"
 edition = "2024"
+description = "OpenDeck/Stream Deck plugin displaying Ninjutso Sora V2 mouse battery level"
+license = "MIT"
+authors = ["Garrett Faucher <garrettfaucher@gmail.com>"]
+repository = "https://github.com/garrettfaucher/streamdeck-sorabattery"
+homepage = "https://github.com/garrettfaucher/streamdeck-sorabattery"
+readme = "README.md"
+keywords = ["streamdeck", "opendeck", "openaction", "plugin"]
+categories = ["hardware-support"]
 
 [dependencies]
 openaction  = "2.6"

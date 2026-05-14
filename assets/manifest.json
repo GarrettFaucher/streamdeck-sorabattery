@@ -4,7 +4,10 @@
 	"Version": "0.1.0",
 	"Description": "Display the battery percentage of your Ninjutso Sora V2 mouse",
 	"Icon": "icon",
+	"CategoryIcon": "icon",
 	"Category": "Sora Battery",
+	"URL": "https://github.com/garrettfaucher/streamdeck-sorabattery",
+	"SDKVersion": 2,
 	"OS": [
 		{ "Platform": "linux" },
 		{ "Platform": "mac", "MinimumVersion": "10.15" },
@@ -22,12 +25,12 @@
 	"CodePathLin": "oasorabattery-x86_64-unknown-linux-gnu",
 	"Actions": [
 		{
-			"UUID": "com.garrett-faucher.sorabattery.monitor",
+			"UUID": "com.garrettfaucher.sorabattery.monitor",
 			"Name": "Battery Monitor",
 			"Icon": "imgs/battery",
 			"Tooltip": "Displays the battery percentage of your Sora V2 mouse",
 			"Controllers": ["Keypad"],
-			"States": [{ "Image": "actionDefaultImage" }]
+			"States": [{ "Image": "imgs/battery" }]
 		}
 	]
 }

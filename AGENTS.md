@@ -26,9 +26,8 @@ Requires `libhidapi-dev` (Linux) or `hidapi` (macOS via Homebrew). Edition 2024 
 | `assets/manifest.json` | Plugin metadata (UUID, action, CodePaths for 5 targets) |
 | `assets/fonts/LiberationSans-Bold.ttf` | Bundled font — do not move without updating `include_bytes!` path |
 | `udev/70-sora-v2.rules` | udev rule granting hidraw access (Linux only) |
-| `legacy/` | Original TypeScript source — reference only, not built |
 
-## HID protocol (mirrored from `legacy/src/actions/battery-hid.ts`)
+## HID protocol
 
 - VID `0x1915`, PID `0xae1c` (wireless) / `0xae11` (wired), usage page `0xffa0`
 - Feature report: `[0]=5, [1]=21, [4]=1`, rest zeros; send then wait 250 ms; get feature report ID 5

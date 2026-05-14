@@ -57,7 +57,7 @@ async fn refresh(instance_id: InstanceId, renderer: &Renderer) -> Option<u64> {
 
 #[async_trait]
 impl Action for BatteryAction {
-	const UUID: ActionUuid = "com.garrett-faucher.sorabattery.monitor";
+	const UUID: ActionUuid = "com.garrettfaucher.sorabattery.monitor";
 	type Settings = BatterySettings;
 
 	async fn will_appear(
