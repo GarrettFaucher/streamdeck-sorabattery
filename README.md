@@ -8,7 +8,7 @@ An [OpenDeck](https://github.com/nekename/OpenDeck) / Elgato Stream Deck plugin 
 - Green ≥ 60%, Orange 30–59%, Red < 30%
 - `CHRG` while charging, `Zzz` when the mouse is off/asleep, `100%` at full charge
 - Press the key to force an immediate refresh
-- Polls every 5 minutes on battery; every 5 seconds while charging or offline
+- Polls every 5 seconds while charging; every 5 minutes otherwise, including while the mouse is asleep (fast polling of a sleeping mouse keeps waking it and drains the battery)
 
 ## Compatibility
 
